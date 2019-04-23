@@ -10,6 +10,11 @@ namespace Chillflixapi.Models
     public class ChillflixapiContext: DbContext
     {
 
+        //Using DbContext with dependency injection
+        public ChillflixapiContext(DbContextOptions<ChillflixapiContext> options):base(options)
+        {
+        }
+
 
     }
 }

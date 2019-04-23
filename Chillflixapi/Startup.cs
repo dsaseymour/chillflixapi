@@ -29,7 +29,9 @@ namespace Chillflixapi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-                 // Use connection string from appsettings.json file
+            
+            //Using DbContext with dependency injection
+           // Use connection string from appsettings.json file
             services.AddDbContext<ChillflixapiContext>(options =>
             {
                 options.UseSqlServer(Configuration["AppSettings:ConnectionString"]);
