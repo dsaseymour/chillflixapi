@@ -7,7 +7,21 @@ namespace Chillflixapi.Models
 {
     public class User
     {
+        //Properties
+        public int UserID { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public DateTime Birthday { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Avatar { get; set; }
+        public DateTime CreatedOn { get; set; }
 
+        //Navigation Properties
+        public virtual Profile Profile { get; set; }
+        public virtual ICollection<UserRating> UserRatings { get; set; }
 
 
     }
