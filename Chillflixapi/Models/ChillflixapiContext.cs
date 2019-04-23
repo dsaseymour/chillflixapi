@@ -27,12 +27,12 @@ namespace Chillflixapi.Models
         //using separate configuration classes with fluent API configuration code 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
-
-
+            modelBuilder.ApplyConfiguration(new MatchEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new PostEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProfileEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new UserRatingEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new MediaEntityConfiguration());
 
         }
-
-
-
     }
 }

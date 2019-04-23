@@ -21,8 +21,5 @@ namespace Chillflixapi.Models
 
         //Navigation Properties
         public virtual Profile Profile { get; set; }
-        public virtual ICollection<UserRating> UserRatings { get; set; }
-
-
     }
 }

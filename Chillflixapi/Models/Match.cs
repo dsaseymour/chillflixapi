@@ -7,5 +7,7 @@ namespace Chillflixapi.Models
 {
     public class Match
     {
+        public int UserID { get; set; }
+        public virtual Profile Profile { get; set; }
     }
 }

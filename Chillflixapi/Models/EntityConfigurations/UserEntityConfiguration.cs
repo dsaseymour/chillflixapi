@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace Chillflixapi.Models.EntityConfigurations
 {
-    public class UserEntityConfiguration: IEntityTypeConfiguration<User>
+    public class UserEntityConfiguration : IEntityTypeConfiguration<User>
     {
-
-
-        public void Configure(EntityTypeBuilder<User> builder)
+        void IEntityTypeConfiguration<User>.Configure(EntityTypeBuilder<User> builder)
         {
 
-
         }
-
     }
 }

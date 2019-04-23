@@ -7,14 +7,11 @@ namespace Chillflixapi.Models
 {
     public class Post
     {
+        public int UserID { get; set; }
         //Properties
         public string Text { get; set; }
         public string PostPrompt { get; set; }
-
-
         //Navigation Properties
-
-
-
+        public virtual Profile Profile { get; set; }
     }
 }

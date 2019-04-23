@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Chillflixapi.Models
 {
-//    public int[] Rating = new [] {1,2,3,4,5,6,7,8,9,10};
+    public enum Rating {One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten};
 
     public class UserRating
     {
@@ -17,6 +17,6 @@ namespace Chillflixapi.Models
 
         //Navigation Properties
         public virtual Media Media { get; set; }
-        public virtual User User { get; set; }
+        public virtual Profile Profile { get; set; }
     }
 }

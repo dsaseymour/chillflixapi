@@ -43,5 +43,6 @@ namespace Chillflixapi.Models
         public virtual User User { get; set; }
         public virtual ICollection<Match> Matches { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<UserRating> UserRatings { get; set; }
     }
 }
