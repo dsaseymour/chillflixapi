@@ -9,9 +9,7 @@ namespace Chillflixapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MediaController : ControllerBase
+    public class AuthController : ControllerBase
     {
     }
-
-
 }

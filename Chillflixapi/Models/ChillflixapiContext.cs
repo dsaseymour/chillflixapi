@@ -32,7 +32,6 @@ namespace Chillflixapi.Models
             modelBuilder.ApplyConfiguration(new ProfileEntityConfiguration());
             modelBuilder.ApplyConfiguration(new UserRatingEntityConfiguration());
             modelBuilder.ApplyConfiguration(new MediaEntityConfiguration());
-
         }
     }
 }
