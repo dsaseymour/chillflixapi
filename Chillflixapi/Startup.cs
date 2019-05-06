@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.AzureADB2C.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +39,9 @@ namespace Chillflixapi
                 options.UseSqlServer(Configuration["AppSettings:ConnectionString"]);
             });
 
+            services.AddAuthentication(AzureADB2CDefaults.BearerAuthenticationScheme)
+        .AddAzureADB2CBearer(options => Configuration.Bind("AzureAdB2C", options));
+
 
         }
 
@@ -54,6 +59,7 @@ namespace Chillflixapi
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
