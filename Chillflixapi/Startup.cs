@@ -31,9 +31,13 @@ namespace Chillflixapi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            
+            //enable CORS to allow the SPA to call our API
+            services.AddCors();
+
+
+
             //Using DbContext with dependency injection
-           // Use connection string from appsettings.json file
+            // Use connection string from appsettings.json file
             services.AddDbContext<ChillflixapiContext>(options =>
             {
                 options.UseSqlServer(Configuration["AppSettings:ConnectionString"]);
