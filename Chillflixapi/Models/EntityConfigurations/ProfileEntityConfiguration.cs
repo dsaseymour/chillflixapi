@@ -11,7 +11,7 @@ namespace Chillflixapi.Models.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Profile> builder)
         {
-
+            
         }
     }
 }

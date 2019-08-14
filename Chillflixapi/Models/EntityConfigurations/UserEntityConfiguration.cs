@@ -11,6 +11,9 @@ namespace Chillflixapi.Models.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.HasKey(u => u.UserID);
+            builder.HasOne(u => u.Profile)
+                .WithOne(p => p.User).HasForeignKey("Profile","ProfileId");
 
         }
     }

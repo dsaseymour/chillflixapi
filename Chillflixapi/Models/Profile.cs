@@ -8,7 +8,8 @@ namespace Chillflixapi.Models
     public class Profile
     {
         //Properties
-        public int UserID { get; set; }
+        public int ProfileID { get; set; }
+        
         #region basics
         public string SexualOrientation { get; set; }
         public string Gender { get; set; }
@@ -40,6 +41,7 @@ namespace Chillflixapi.Models
         #endregion
 
         //Navigation Properties
+        public int UserID{get;set;}
         public virtual User User { get; set; }
         public virtual ICollection<Match> Matches { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
