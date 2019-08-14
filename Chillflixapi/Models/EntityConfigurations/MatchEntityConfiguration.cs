@@ -9,7 +9,7 @@ namespace Chillflixapi.Models.EntityConfigurations
 {
     public class MatchEntityConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Match>
     {
-        void IEntityTypeConfiguration<Match>.Configure(EntityTypeBuilder<Match> builder)
+        public void Configure(EntityTypeBuilder<Match> builder)
         {
 
         }

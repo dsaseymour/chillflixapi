@@ -9,7 +9,7 @@ namespace Chillflixapi.Models.EntityConfigurations
 {
     public class ProfileEntityConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Profile>
     {
-        void IEntityTypeConfiguration<Profile>.Configure(EntityTypeBuilder<Profile> builder)
+        public void Configure(EntityTypeBuilder<Profile> builder)
         {
 
         }

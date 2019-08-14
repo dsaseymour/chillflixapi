@@ -9,7 +9,7 @@ namespace Chillflixapi.Models.EntityConfigurations
 {
     public class PostEntityConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Post>
     {
-        void IEntityTypeConfiguration<Post>.Configure(EntityTypeBuilder<Post> builder)
+        public void Configure(EntityTypeBuilder<Post> builder)
         {
 
         }

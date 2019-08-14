@@ -8,7 +8,7 @@ namespace Chillflixapi.Models
     public class User
     {
         //Properties
-        public int UserID { get; set; }
+        public int UserID { get; set; }//Primary Key
         public string City { get; set; }
         public string Country { get; set; }
         public DateTime Birthday { get; set; }

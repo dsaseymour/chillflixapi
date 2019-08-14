@@ -26,6 +26,7 @@ namespace Chillflixapi.Models
 
         //using separate configuration classes with fluent API configuration code 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            //applying configurations
             modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
             modelBuilder.ApplyConfiguration(new MatchEntityConfiguration());
             modelBuilder.ApplyConfiguration(new PostEntityConfiguration());

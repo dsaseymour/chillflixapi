@@ -9,7 +9,7 @@ namespace Chillflixapi.Models.EntityConfigurations
 {
     public class MediaEntityConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Media>
     {
-        void IEntityTypeConfiguration<Media>.Configure(EntityTypeBuilder<Media> builder)
+        public void Configure(EntityTypeBuilder<Media> builder)
         {
 
         }

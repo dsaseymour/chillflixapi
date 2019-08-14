@@ -9,7 +9,7 @@ namespace Chillflixapi.Models.EntityConfigurations
 {
     public class UserEntityConfiguration : IEntityTypeConfiguration<User>
     {
-        void IEntityTypeConfiguration<User>.Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
 
         }

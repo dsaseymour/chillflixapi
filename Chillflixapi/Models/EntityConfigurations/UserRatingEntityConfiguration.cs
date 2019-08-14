@@ -9,7 +9,7 @@ namespace Chillflixapi.Models.EntityConfigurations
 {
     public class UserRatingEntityConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<UserRating>
     {
-        void IEntityTypeConfiguration<UserRating>.Configure(EntityTypeBuilder<UserRating> builder)
+        public void Configure(EntityTypeBuilder<UserRating> builder)
         {
 
         }
