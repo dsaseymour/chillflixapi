@@ -20,6 +20,7 @@ namespace Chillflixapi.Models
         public DateTime CreatedOn { get; set; }
 
         //Navigation Properties
+        public int ProfileID { get; set; }
         public virtual Profile Profile { get; set; }
     }
 }

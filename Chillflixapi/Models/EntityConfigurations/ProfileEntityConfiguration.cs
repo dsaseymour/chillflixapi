@@ -11,7 +11,18 @@ namespace Chillflixapi.Models.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Profile> builder)
         {
-            
+            //User Id should Identify the profile
+            builder.HasKey(p => p.ProfileID );
+
+            builder.HasMany(pts => pts.Posts)
+                .WithOne(p => p.Profile);
+
+            //a match should link two profiles 
+
+            builder.HasMany(urt => urt.UserRatings)
+                .WithOne(p => p.Profile);
+            //user rating should link to a profile and a media object
+
         }
     }
 }

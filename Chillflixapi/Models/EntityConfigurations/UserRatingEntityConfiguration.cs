@@ -11,7 +11,11 @@ namespace Chillflixapi.Models.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<UserRating> builder)
         {
-
+            builder.HasKey(ur => new { ur.MediaID,ur.ProfileID});
+            builder.HasOne(t => t.Media);
+            builder.HasOne(o => o.Profile);
         }
+        //user rating is identified by a mediaid and userid
+        //a user can only generate one rating for each piece of media
     }
 }

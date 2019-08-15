@@ -8,8 +8,7 @@ namespace Chillflixapi.Models
     public class Profile
     {
         //Properties
-        public int ProfileID { get; set; }
-        
+        public int ProfileID;
         #region basics
         public string SexualOrientation { get; set; }
         public string Gender { get; set; }
@@ -43,8 +42,12 @@ namespace Chillflixapi.Models
         //Navigation Properties
         public int UserID{get;set;}
         public virtual User User { get; set; }
-        public virtual ICollection<Match> Matches { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<UserRating> UserRatings { get; set; }
+
+        //this profile has a list of matches it will be profileA or profileB for
+        public List<Match> ProfileAfor { get; set; }
+        public List<Match> ProfileBfor { get; set; }
     }
 }
+//https://entityframeworkcore.com/knowledge-base/50398457/2-foreign-keys-as-primary-key-using-ef-core-2-0-code-first

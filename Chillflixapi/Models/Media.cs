@@ -1,5 +1,12 @@
-﻿ TVorMovie
-    {tv,movie}
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Chillflixapi.Models
+{
+   public enum TVorMovie
+    { tv,movie}
 
     public class Media
     {
@@ -15,11 +22,4 @@
         //Navigation Properties
         public virtual ICollection<UserRating> UserRatings { get; set; }
     }
-}using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Chillflixapi.Models
-{
-    public enum
+}
