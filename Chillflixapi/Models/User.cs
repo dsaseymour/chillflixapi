@@ -8,7 +8,7 @@ namespace Chillflixapi.Models
     public class User
     {
         //Properties
-        public int UserID { get; set; }//Primary Key
+        public int UserId { get; set; }//Primary Key
         public string City { get; set; }
         public string Country { get; set; }
         public DateTime Birthday { get; set; }
@@ -20,7 +20,7 @@ namespace Chillflixapi.Models
         public DateTime CreatedOn { get; set; }
 
         //Navigation Properties
-        public int ProfileID { get; set; }
+        public int ProfileFkey { get; set; }
         public virtual Profile Profile { get; set; }
     }
 }

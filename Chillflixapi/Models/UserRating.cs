@@ -10,11 +10,12 @@ namespace Chillflixapi.Models
     public class UserRating
     {
         //Properties
-        public int MediaID { get; set; }
-        public int ProfileID { get; set; }
+        public int MediaFkey { get; set; }
+        public int ProfileFkey { get; set; }
   //      public Rating Rating { get; set; }
 
         //Navigation Properties
+
         public virtual Media Media { get; set; }
         public virtual Profile Profile { get; set; }
     }

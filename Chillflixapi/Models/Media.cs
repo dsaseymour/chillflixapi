@@ -11,7 +11,7 @@ namespace Chillflixapi.Models
     public class Media
     {
         //Properties
-        public int MediaID { get; set; }
+        public int MediaId { get; set; }
         public string Title { get; set; }
         public string Picture { get; set; }
         public string Genre { get; set; }

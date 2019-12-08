@@ -11,7 +11,7 @@ namespace Chillflixapi.Models.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<UserRating> builder)
         {
-            builder.HasKey(ur => new { ur.MediaID,ur.ProfileID});
+            builder.HasKey(ur => new { ur.MediaId,ur.ProfileId});
             builder.HasOne(t => t.Media);
             builder.HasOne(o => o.Profile);
         }

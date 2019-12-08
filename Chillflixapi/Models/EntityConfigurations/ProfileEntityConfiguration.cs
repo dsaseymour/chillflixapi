@@ -12,7 +12,7 @@ namespace Chillflixapi.Models.EntityConfigurations
         public void Configure(EntityTypeBuilder<Profile> builder)
         {
             //User Id should Identify the profile
-            builder.HasKey(p => p.ProfileID );
+            builder.HasKey(p => p.ProfileId );
 
             builder.HasMany(pts => pts.Posts)
                 .WithOne(p => p.Profile);

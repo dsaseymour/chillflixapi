@@ -14,8 +14,9 @@ namespace Chillflixapi.Models.EntityConfigurations
             //a Media Entity has a Media EntityID
             //It has many User Ratings 
 
-            builder.HasKey(med => med.MediaID);
-            builder.HasMany(ur => ur.UserRatings);
+            builder.HasKey(med => med.MediaId);
+            builder.HasMany(ur => ur.UserRatings).WithOne(ur => ur.Media).HasForeignKey(ur => ur.MediaFkey);
+            //userratings depend on us 
             
         }
     }

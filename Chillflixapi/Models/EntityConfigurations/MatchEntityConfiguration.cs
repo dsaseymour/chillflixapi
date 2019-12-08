@@ -11,7 +11,7 @@ namespace Chillflixapi.Models.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Match> builder)
         {
-            builder.HasKey(m => m.MatchID);
+            builder.HasKey(m => m.MatchId);
 
             builder.HasOne(m => m.ProfileA)
                     .WithMany(p => p.ProfileAfor);

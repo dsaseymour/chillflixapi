@@ -11,5 +11,10 @@ namespace Chillflixapi.Controllers
     [ApiController]
     public class ProfileController : ControllerBase
     {
+
+
+
+
+
     }
 }

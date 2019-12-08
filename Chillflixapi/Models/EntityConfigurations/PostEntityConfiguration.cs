@@ -11,7 +11,7 @@ namespace Chillflixapi.Models.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Post> builder)
         {
-            builder.HasKey(p => p.PostID);
+            builder.HasKey(p => p.PostId);
         }
     }
 }

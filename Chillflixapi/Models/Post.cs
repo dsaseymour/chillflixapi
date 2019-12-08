@@ -8,11 +8,11 @@ namespace Chillflixapi.Models
     public class Post
     {
         //Properties
-        public int PostID { get; set; }
+        public int PostId { get; set; }
         public string Text { get; set; }
         public string PostPrompt { get; set; }
         //Navigation Properties
-        public int ProfileID { get; set; }//ForeignKey to represent association with profile
+        public int ProfileFkey { get; set; }//ForeignKey to represent association with profile
         public virtual Profile Profile { get; set; }
     }
 }
