@@ -14,6 +14,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Serilog;
+using Microsoft.OpenApi.Models;
+
 
 namespace Chillflixapi
 {
@@ -31,11 +34,27 @@ namespace Chillflixapi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddMvcCore().AddXmlSerializerFormatters().AddJsonFormatters();
+            //Register Swagger Generator, Define Swagger Documents
+            services.AddSwaggerGen((options) => {
+                options.SwaggerDoc(
+                    "v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Chillflix API",
+                        Version = "v1",
+                        Description = "Chillflix an ASP.NET Core Application",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Danny Seymour",
+                            Url = new Uri("https://dannyseymour.me"),
+                        }
+                    }
+                    );
+            });
+
             //enable CORS to allow the SPA to call our API
             services.AddCors();
-
-
-
             //Using DbContext with dependency injection
             // Use connection string from appsettings.json file
             services.AddDbContext<ChillflixapiContext>(options =>
@@ -61,9 +80,17 @@ namespace Chillflixapi
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseSerilogRequestLogging();
+            app.ConfigureCustomExceptionMiddleware();
             app.UseHttpsRedirection();
             app.UseAuthentication();
+            //Enable middleware to serve generated Swagger as a JSON endpoint
+            app.UseSwagger();
+            //Enable middleware to server swagger ui
+            //Specify Swagger JSON Endpoint
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ChillFlix APIV1");
+            });
             app.UseMvc();
         }
     }

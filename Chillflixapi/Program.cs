@@ -7,6 +7,10 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Core;
+using Serilog.Events;
+
 
 namespace Chillflixapi
 {
@@ -14,11 +18,40 @@ namespace Chillflixapi
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            //setup config begins
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            //setup config ends
+
+            //configure logger begins
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(configuration)
+            .CreateLogger();
+            //configure logger ends
+
+            try
+            {
+                Log.Information("Application Starting Up");
+                CreateWebHostBuilder(args).Build().Run();
+
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Application Failed to Start");
+
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+           WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>()
+               .UseSerilog();
+
     }
 }
