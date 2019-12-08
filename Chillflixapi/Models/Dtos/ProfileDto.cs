@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Chillflixapi.Models
+namespace Chillflixapi.Models.Dtos
 {
 
-    public class Profile : IEntity
+    public class ProfileDto
     {
+        //Profile Data Transfer Object to be sent to client
         //Properties
         public int Id { get; set; }
         #region basics
@@ -40,18 +37,7 @@ namespace Chillflixapi.Models
         public string LookingForAge { get; set; }
         #endregion
 
-        //Navigation Properties
-        public int UserFkey { get; set; }
-        public virtual User User { get; set; }
-        //   public virtual ICollection<Post> Posts { get; set; }
-        // public virtual ICollection<UserRating> UserRatings { get; set; }
 
-        //this profile has a list of matches it will be profileA or profileB for
-        // public List<Match> ProfileAfor { get; set; }
-        // public List<Match> ProfileBfor { get; set; }
     }
 
-
-
 }
-//https://entityframeworkcore.com/knowledge-base/50398457/2-foreign-keys-as-primary-key-using-ef-core-2-0-code-first

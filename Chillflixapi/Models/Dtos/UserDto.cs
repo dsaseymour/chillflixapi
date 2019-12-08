@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-
-
-
-namespace Chillflixapi.Models
+namespace Chillflixapi.Models.Dtos
 {
 
-    public class User : IEntity
+    public class UserDto
     {
-        public User()
-        {
-        }
+        //User Data Transfer Object to be sent to client
 
         public int Id { get; set; }//Primary Key
         public string City { get; set; }
@@ -26,9 +17,7 @@ namespace Chillflixapi.Models
         public string Avatar { get; set; }
         public DateTime CreatedOn { get; set; }
 
-        //Navigation Properties
-        public int ProfileFKey;
-        public virtual Profile Profile { get; set; }
+
     }
 
 
