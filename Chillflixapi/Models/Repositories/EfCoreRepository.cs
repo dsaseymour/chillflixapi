@@ -6,52 +6,25 @@ using Microsoft.Extensions.Logging;
 
 namespace Chillflixapi.Models.Repositories
 {
+
     public abstract class EfCoreRepository<TEntity, TContext> : MyBaseRepository<TEntity>
     where TContext : DbContext
-    where TEntity : class
+    where TEntity : class, IEntity
     {
         private readonly TContext _context;
-        private readonly ILogger _logger;
 
-        public EfCoreRepository(TContext context, ILogger logger)
+        public EfCoreRepository(TContext context)
         {
             _context = context;
-            _logger = logger;
         }
 
-        #region REPOSITORY GET(ID)
-        public async Task<TEntity> Get(int id)
-        {
-            return await _context.Set<TEntity>().FindAsync(id);
-        }
-        #endregion
-
-        #region REPOSITORY GET ALL
-        public async Task<List<TEntity>> GetAll()
-        {
-            return await _context.Set<TEntity>().ToListAsync();
-        }
-        #endregion
-
-        #region REPOSITORY POST
         public async Task<TEntity> Add(TEntity entity)
         {
-            await _context.Set<TEntity>().AddAsync(entity);
+            _context.Set<TEntity>().Add(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
-        #endregion
 
-        #region REPOSITORY PUT (ID)
-        public async Task<TEntity> Update(TEntity entity)
-        {
-            _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return entity;
-        }
-        #endregion
-
-        #region REPOSITORY DELETEID
         public async Task<TEntity> Delete(int id)
         {
             var entity = await _context.Set<TEntity>().FindAsync(id);
@@ -60,21 +33,28 @@ namespace Chillflixapi.Models.Repositories
                 return entity;
             }
 
-            try
-            {
-                _context.Set<TEntity>().Remove(entity);
-                await _context.SaveChangesAsync();
+            _context.Set<TEntity>().Remove(entity);
+            await _context.SaveChangesAsync();
 
-                return entity;
-            }
-            catch (Exception ex)
-            {
-
-
-
-            }
+            return entity;
         }
-        #endregion
+
+        public async Task<TEntity> Get(int id)
+        {
+            return await _context.Set<TEntity>().FindAsync(id);
+        }
+
+        public async Task<List<TEntity>> GetAll()
+        {
+            return await _context.Set<TEntity>().ToListAsync();
+        }
+
+        public async Task<TEntity> Update(TEntity entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return entity;
+        }
 
     }
 

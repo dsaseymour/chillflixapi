@@ -16,6 +16,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Microsoft.OpenApi.Models;
+using Chillflixapi.Models;
+using Chillflixapi.Models.Repositories;
 
 
 namespace Chillflixapi

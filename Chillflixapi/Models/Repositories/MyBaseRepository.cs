@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chillflixapi.Models.Repositories
 {
-
-    public interface MyBaseRepository<T> where T : class
+    public interface MyBaseRepository<T> where T : class, IEntity
     {
         Task<List<T>> GetAll();
         Task<T> Get(int id);

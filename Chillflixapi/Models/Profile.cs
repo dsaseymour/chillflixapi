@@ -14,8 +14,10 @@ namespace Chillflixapi.Models
         public string SexualOrientation { get; set; }
         public string Gender { get; set; }
         public string RelationshipStatus { get; set; }
-        public int Height { get; set; }
+        public string Height { get; set; }
         public string AboutMe { get; set; }
+        public DateTime LastActive { get; set; }
+        public DateTime CreatedOn { get; set; }
         #endregion
 
         #region background
@@ -37,20 +39,32 @@ namespace Chillflixapi.Models
 
         #region lookingfor
         public string LookingForGender { get; set; }
-        public string LookingForAge { get; set; }
+        public int LookingForAge { get; set; }
         #endregion
+
+
+        #region joinTables
+        public virtual ICollection<Jprofiletomatch> Jprofiletomatches { get; set; }
+        public virtual ICollection<Jprofiletomatchresponse> Jprofiletomatchresponses { get; set; }
+        public virtual ICollection<Jprofiletomatchrequest> Jprofiletomatchrequests { get; set; }
+        #endregion
+
 
         //Navigation Properties
         public int UserFkey { get; set; }
         public virtual User User { get; set; }
+
+        public virtual ICollection<MatchRequest> iamresponderin { get; set; }
+        public virtual ICollection<MatchResponse> iamrequesterin { get; set; }
+
         //   public virtual ICollection<Post> Posts { get; set; }
         // public virtual ICollection<UserRating> UserRatings { get; set; }
-
+        // public virtual ICollection<Photos> {get;set;}
+        // public virtual ICollection<Message> {get;set;}
+        // public virtual ICollection<Like> {get;set;}
         //this profile has a list of matches it will be profileA or profileB for
-        // public List<Match> ProfileAfor { get; set; }
-        // public List<Match> ProfileBfor { get; set; }
-    }
 
+    }
 
 
 }
