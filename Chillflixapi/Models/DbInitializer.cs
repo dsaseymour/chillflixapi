@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
+
 namespace Chillflixapi.Models
 {
 
     public class DbInitializer
     {
 
-        public static void Initialize(ChillflixContext context)
+        public static void Initialize(ChillflixapiContext context)
         {
             context.Database.EnsureCreated();
             //if users already exist then the database has been seeded
@@ -23,7 +27,7 @@ namespace Chillflixapi.Models
             context.SaveChanges();
         }
 
-        public static void SeedUsers(ChillflixContext context)
+        public static void SeedUsers(ChillflixapiContext context)
         {
             if (context.Users.Any() && context.Users.Count() > 3)
             {
@@ -53,7 +57,7 @@ namespace Chillflixapi.Models
             #endregion
         }
 
-        public static void SeedProfiles(ChillflixContext context)
+        public static void SeedProfiles(ChillflixapiContext context)
         {
             #region profile
             string profileData = System.IO.File.ReadAllText("Models/Data/profileData.json");
@@ -90,7 +94,7 @@ namespace Chillflixapi.Models
 
         }
 
-        public static void SeedMatches(ChillflixContext context)
+        public static void SeedMatches(ChillflixapiContext context)
         {
             #region match
 

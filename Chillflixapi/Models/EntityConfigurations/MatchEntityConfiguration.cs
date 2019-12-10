@@ -1,4 +1,7 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 namespace Chillflixapi.Models.EntityConfigurations
 {
 
