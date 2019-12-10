@@ -16,8 +16,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Microsoft.OpenApi.Models;
-using Chillflixapi.Models;
 using Chillflixapi.Models.Repositories;
+using Chillflixapi.Controllers;
 
 
 namespace Chillflixapi
@@ -34,7 +34,7 @@ namespace Chillflixapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<ChillflixapiContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContextPool<ChillflixapiContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<ProfileRepository>();
             services.AddScoped<UserRepository>();
