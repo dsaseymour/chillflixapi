@@ -9,7 +9,7 @@ using Chillflixapi.Models.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace Chillflixapi.Controllers
-{//test
+{
     [Route("api/[controller]")]
     [ApiController]
     public class HomeController : MyBaseController<HomeController,Profile, ProfileRepository>
