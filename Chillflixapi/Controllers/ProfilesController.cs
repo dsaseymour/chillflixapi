@@ -6,15 +6,15 @@ using Chillflixapi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Chillflixapi.Models.Repositories;
-
+using Microsoft.Extensions.Logging;
 
 namespace Chillflixapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProfilesController : MyBaseController<Profile, ProfileRepository>
+    public class ProfilesController : MyBaseController<ProfilesController,Profile, ProfileRepository>
     {
-        public ProfilesController(ProfileRepository prepository) : base(prepository)
+        public ProfilesController(ProfileRepository prepository, ILogger<ProfilesController> logger) : base(prepository,logger)
         {
 
         }
