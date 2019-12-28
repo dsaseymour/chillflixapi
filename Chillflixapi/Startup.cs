@@ -95,6 +95,7 @@ namespace Chillflixapi
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ChillFlix APIV1");
             });
+
             app.UseMvc();
         }
     }

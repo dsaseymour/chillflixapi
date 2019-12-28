@@ -9,7 +9,7 @@ namespace Chillflixapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostController : ControllerBase
+    public class PostsController : ControllerBase
     {
     }
 }
