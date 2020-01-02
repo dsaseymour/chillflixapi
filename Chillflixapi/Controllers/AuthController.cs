@@ -11,5 +11,7 @@ namespace Chillflixapi.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        //https://www.notion.so/dannysas/Auth-Controller-6778a676b8a740888bc6cd418f47fda9
+
     }
 }

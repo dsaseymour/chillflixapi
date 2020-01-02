@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace Chillflixapi.Models.Repositories
 {
 
-    public abstract class EfCoreRepository<TEntity, TContext> : MyBaseRepository<TEntity>
+    public abstract class EfCoreRepository<TEntity, TContext> : IEfCoreRepository<TEntity>
     where TContext : DbContext
     where TEntity : class, IEntity
     {
