@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Chillflixapi.Models.Repositories
 {
+    //https://www.notion.so/dannysas/EfCoreRepository-ba39cc24447d44adbbf3358747a3d75e
 
     public abstract class EfCoreRepository<TEntity, TContext> : IEfCoreRepository<TEntity>
     where TContext : DbContext

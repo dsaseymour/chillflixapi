@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chillflixapi.Models.Repositories
 {
+    //https://www.notion.so/dannysas/IEfCoreRepository-9d6b29ff2020415089a078779a64a923
     public interface IEfCoreRepository<T> where T : class, IEntity
     {
         Task<List<T>> GetAll();
