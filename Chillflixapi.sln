@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chillflixapi", "Chillflixapi\Chillflixapi.csproj", "{DB02C59B-1D92-4DD0-93C1-24677F2D65A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{E70F5B1E-BEA9-4AA6-8D03-EA64D25F03A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{F99BC4CF-BD51-41C4-9998-797FD7E9F487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{217AAAC6-6241-4A30-B954-9D91BE5E58B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{A87185CA-22CE-492F-AEC6-AC28E032BB9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{DB02C59B-1D92-4DD0-93C1-24677F2D65A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB02C59B-1D92-4DD0-93C1-24677F2D65A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB02C59B-1D92-4DD0-93C1-24677F2D65A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E70F5B1E-BEA9-4AA6-8D03-EA64D25F03A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70F5B1E-BEA9-4AA6-8D03-EA64D25F03A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E70F5B1E-BEA9-4AA6-8D03-EA64D25F03A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E70F5B1E-BEA9-4AA6-8D03-EA64D25F03A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F99BC4CF-BD51-41C4-9998-797FD7E9F487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F99BC4CF-BD51-41C4-9998-797FD7E9F487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F99BC4CF-BD51-41C4-9998-797FD7E9F487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F99BC4CF-BD51-41C4-9998-797FD7E9F487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{217AAAC6-6241-4A30-B954-9D91BE5E58B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{217AAAC6-6241-4A30-B954-9D91BE5E58B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{217AAAC6-6241-4A30-B954-9D91BE5E58B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{217AAAC6-6241-4A30-B954-9D91BE5E58B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A87185CA-22CE-492F-AEC6-AC28E032BB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A87185CA-22CE-492F-AEC6-AC28E032BB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A87185CA-22CE-492F-AEC6-AC28E032BB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A87185CA-22CE-492F-AEC6-AC28E032BB9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
