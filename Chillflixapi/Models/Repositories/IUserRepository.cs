@@ -1,17 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-
 namespace Chillflixapi.Models.Repositories
 {
-    public interface IUserRepository<User> 
+    public interface IUserRepository
     {
-        void SaveUser(User user);
-    IEnumerable<User> GetAllUsers();
-    User GetUser(int id);
-    void DeletedStudent(int id);
-    void UpdateUser(User user);
-}
+        //https://www.notion.so/dannysas/IUserRepository-5cd139967c4e47f59abe460487760422
 
-
+    }
 }

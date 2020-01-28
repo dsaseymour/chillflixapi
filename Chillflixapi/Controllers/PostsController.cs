@@ -9,7 +9,10 @@ namespace Chillflixapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PostController : ControllerBase
+    public class PostsController : ControllerBase
     {
+        // https://www.notion.so/dannysas/Post-Controller-e7d8b1fa24c64a22a519102cc3a04f60
+
+
     }
 }

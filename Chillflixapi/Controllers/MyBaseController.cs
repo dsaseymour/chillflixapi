@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Chillflixapi.Controllers
 {
-     
+    //https://www.notion.so/dannysas/Base-Controller-8adbe68ce13549cf904fee73939c32e4
     [Route("api/[controller]")]
     [ApiController]
     public abstract class MyBaseController<TCategoryName,TEntity, TRepository> : ControllerBase

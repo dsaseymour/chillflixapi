@@ -11,6 +11,7 @@ namespace Chillflixapi.Controllers
     [ApiController]
     public class MediaController : ControllerBase
     {
+        //https://www.notion.so/dannysas/Media-Controller-960f13f4d8f846b49febd2a14a4b9fd8
     }
 
 
