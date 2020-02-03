@@ -1,8 +1,8 @@
-﻿using System;
+﻿Entities.ConfigurationEntities.ConfigurationEntities.Configurationusing System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Chillflixapi.Models.EntityConfigurations
+namespace Entities.Configuration
 {
 
     public class MatchResponseEntityConfiguration : IEntityTypeConfiguration<MatchResponse>

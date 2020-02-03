@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Chillflixapi.Models
+namespace Contracts
 {
 
     public interface IEntity

@@ -1,5 +1,6 @@
 ﻿using System;
-namespace Chillflixapi.Models.Repositories
+using Chillflixapi.Contracts;
+namespace Repositories
 {
     public class AuthRepository:IAuthRepository
     {

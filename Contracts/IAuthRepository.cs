@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Chillflixapi.Models.Repositories
+namespace Contracts
 {
     public interface IAuthRepository
     {

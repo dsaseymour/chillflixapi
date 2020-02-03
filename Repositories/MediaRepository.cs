@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Chillflixapi.Models.Repositories
+namespace Repositories
 {
     public class MediaRepository
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chillflixapi.Models.EntityConfigurations
+namespace Entities.Configuration
 {
 
     public class UserEntityConfiguration : IEntityTypeConfiguration<User>

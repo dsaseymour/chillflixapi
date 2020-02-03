@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
+using Chillflixapi.Middleware;
 
-namespace Chillflixapi.Controllers
+
+namespace Chillflixapi.Extensions
 {
     public static class ExceptionMiddlewareExtensions
     {

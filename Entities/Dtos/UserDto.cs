@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Chillflixapi.Models.Dtos
+namespace Entities.Models.Dtos
 {
 
     public class UserDto

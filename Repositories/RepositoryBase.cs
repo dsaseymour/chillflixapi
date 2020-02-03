@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Contracts;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Chillflixapi.Models.Repositories
+namespace Repositories
 {
     //https://www.notion.so/dannysas/EfCoreRepository-ba39cc24447d44adbbf3358747a3d75e
 
-    public abstract class EfCoreRepository<TEntity, TContext> : IEfCoreRepository<TEntity>
-    where TContext : DbContext
-    where TEntity : class, IEntity
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
-        private readonly TContext _context;
+        protected T _context;
 
-        public EfCoreRepository(TContext context)
+        public RepositoryBase( ChillflixapiContext context)
         {
             _context = context;
         }

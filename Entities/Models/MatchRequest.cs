@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Chillflixapi.Models
+namespace Entities.Models
 {
 
     public class MatchRequest

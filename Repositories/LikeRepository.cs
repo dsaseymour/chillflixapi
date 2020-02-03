@@ -1,10 +1,16 @@
 ﻿using System;
-namespace Chillflixapi.Models.Repositories
+using Contracts;
+using Entities;
+
+
+namespace Repositories
 {
-    public class LikeRepository
+    public class LikeRepository : EfCoreRepository<ChillflixapiContext> ,ILikeRepository
     {
-        public LikeRepository()
+        public LikeRepository(ChillflixapiContext chillflixcontext)
+            : base(chillflixcontext)
         {
         }
+
     }
 }

@@ -1,5 +1,8 @@
 ﻿using System;
-namespace Chillflixapi.Models.Repositories
+using Contracts;
+using Entities;
+
+namespace Repositories
 {
     public class UserRepository : EfCoreRepository<User, ChillflixapiContext>
     {
@@ -7,6 +10,9 @@ namespace Chillflixapi.Models.Repositories
         public UserRepository(ChillflixapiContext chillflixcontext) : base(chillflixcontext)
         {
         }
+
+
+
         /*
          *    void SaveUser(User user);
             IEnumerable<User> GetAllUsers();

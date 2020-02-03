@@ -13,7 +13,7 @@ using System.Runtime.Serialization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Chillflixapi.Controllers
+namespace Chillflixapi.Middleware
 {
 
     public class ExceptionMiddleware

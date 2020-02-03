@@ -33,6 +33,8 @@
   <ItemGroup>
     <Folder Include="ActionFilters\" />
     <Folder Include="ModelBinders\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Middleware\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj">

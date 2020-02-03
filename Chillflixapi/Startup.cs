@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Chillflixapi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,8 +15,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Microsoft.OpenApi.Models;
-using Chillflixapi.Models.Repositories;
-using Chillflixapi.Controllers;
+using Repositories;
+
 
 
 namespace Chillflixapi

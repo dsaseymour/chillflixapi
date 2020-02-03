@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Chillflixapi.Models.EntityConfigurations
+namespace Entities.Configuration
 {
     public class ProfileEntityConfiguration : IEntityTypeConfiguration<Profile>
     {

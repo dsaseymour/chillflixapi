@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Chillflixapi.Models
+namespace Entities.Models
 {
 
     public enum ERequestResponseStatus
