@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Contracts;
 using Entities;
@@ -20,33 +22,23 @@ namespace Repositories
         }
 
         public void Add(T entity) => _repositoryContext.Set<T>().Add(entity);
-        
 
-        public void Delete(int id)
-        {
-            var entity = await _context.Set<TEntity>().FindAsync(id);
-            if (entity == null)
-            {
-                return entity;
-            }
+        public void Delete(T entity) => _repositoryContext.Set<T>().Remove(entity);
 
-            _context.Set<TEntity>().Remove(entity);
-            await _context.SaveChangesAsync();
+        public void Update(T entity) => _repositoryContext.Set<T>().Update(entity);
 
-            return entity;
-        }
 
         public IQueryable<T> Get(int id)
         {
-            return await _context.Set<TEntity>().FindAsync(id);
+            return _repositoryContext.Set<T>().Find(id);
         }
 
-        public IQueryable<T> GetAll()
-        {
-            return await _context.Set<TEntity>().ToListAsync();
-        }
+        public IQueryable<T> GetAll(bool trackchanges) => !trackchanges ? _repositoryContext.Set<T>().AsNoTracking() : _repositoryContext.Set<T>();
+        
 
-        public void Update(T entity) => _repositoryContext.Entry(entity).State = EntityState.Modified;
+        public IQueryable<T> GetByCondition(Expression<Func<T, bool>> expression, bool trackChanges) => !trackChanges ? _repositoryContext.Set<T>().Where(expression).AsNoTracking(): _repositoryContext.Set<T>().Where(expression);
+                
+                
 
     }
 

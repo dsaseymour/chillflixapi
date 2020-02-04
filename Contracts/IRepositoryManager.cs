@@ -19,7 +19,7 @@ namespace Contracts
      * _repository.User.Create(user);
      * 
      * */
-
-        void SaveAsync();
+        //IUserRepository User {get;}
+        Task SaveAsync();
     }
 }
