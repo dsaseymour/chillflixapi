@@ -29,7 +29,7 @@ namespace Contracts
         void Delete(T entity);
         */
 
-        Task<T> GetById(int id);
+        Task<T> GetById(T entity);
         Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
 
         Task<int> CountAll();

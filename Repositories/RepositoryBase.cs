@@ -28,9 +28,10 @@ namespace Repositories
         public void Update(T entity) => _repositoryContext.Set<T>().Update(entity);
 
 
-        public async Task Get(int id)
+        public async Task GetById(T entity, )
         {
              await _repositoryContext.Set<T>().FindAsync(id);
+
         }
 
         public IQueryable<T> GetAll(bool trackchanges) => !trackchanges ? _repositoryContext.Set<T>().AsNoTracking() : _repositoryContext.Set<T>();
