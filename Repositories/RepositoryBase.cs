@@ -12,21 +12,17 @@ namespace Repositories
 
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
-        protected T _context;
+        protected ChillflixapiContext _repositoryContext;
 
-        public RepositoryBase( ChillflixapiContext context)
+        public RepositoryBase( ChillflixapiContext repositoryContext)
         {
-            _context = context;
+            _repositoryContext = repositoryContext;
         }
 
-        public async Task<TEntity> Add(TEntity entity)
-        {
-            _context.Set<TEntity>().Add(entity);
-            await _context.SaveChangesAsync();
-            return entity;
-        }
+        public void Add(T entity) => _repositoryContext.Set<T>().Add(entity);
+        
 
-        public async Task<TEntity> Delete(int id)
+        public void Delete(int id)
         {
             var entity = await _context.Set<TEntity>().FindAsync(id);
             if (entity == null)
@@ -40,22 +36,17 @@ namespace Repositories
             return entity;
         }
 
-        public async Task<TEntity> Get(int id)
+        public IQueryable<T> Get(int id)
         {
             return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<List<TEntity>> GetAll()
+        public IQueryable<T> GetAll()
         {
             return await _context.Set<TEntity>().ToListAsync();
         }
 
-        public async Task<TEntity> Update(TEntity entity)
-        {
-            _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return entity;
-        }
+        public void Update(T entity) => _repositoryContext.Entry(entity).State = EntityState.Modified;
 
     }
 

@@ -1,9 +1,9 @@
 ﻿using System;
 namespace Repositories
 {
-    public class MediaRepository
+    public class MediaRepository:RepositoryBase<Media>,IMediaRepository
     {
-        public MediaRepository()
+        public MediaRepository(Chillflixapicontext repositoryContextoodf):base(Chillflixapicontext repositoryContext)
         {
         }
     }

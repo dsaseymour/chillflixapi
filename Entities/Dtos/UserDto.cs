@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Entities.Models.Dtos
+namespace Entities.Dtos
 {
 
     public class UserDto

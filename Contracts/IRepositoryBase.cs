@@ -14,7 +14,7 @@ namespace Contracts
      *
      * */
     //https://www.notion.so/dannysas/IEfCoreRepository-9d6b29ff2020415089a078779a64a923
-    public interface RepositoryBase<T> 
+    public interface IRepositoryBase<T> 
     {
         IQueryable<T> GetAll(bool trackChanges);
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);

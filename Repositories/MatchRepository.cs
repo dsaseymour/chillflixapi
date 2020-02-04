@@ -1,9 +1,12 @@
 ﻿using System;
+using Entities.Models;
+using Contracts;
+
 namespace Repositories
 {
-    public class MatchRepository
+    public class MatchRepository: RepositoryBase<Match>, IMatchRepository
     {
-        public MatchRepository()
+        public MatchRepository(ChillflixapiContext repositoryContext):base(repositoryContext                                              )
         {
         }
     }

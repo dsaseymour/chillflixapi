@@ -34,6 +34,89 @@ namespace Repositories
             }
         }
 
+        public IMatchRepository Match
+        {
+            get
+            {
+                if (_matchRepository == null)
+                    _matchRepository = new MatchRepository(_repositoryContext);
+
+                return _matchRepository;
+            }
+        }
+
+
+
+
+        public IMediaRepository Media
+        {
+            get
+            {
+                if (_mediaRepository == null)
+                    _mediaRepository = new MediaRepository(_repositoryContext);
+
+                return _mediaRepository;
+            }
+        }
+
+        public IPhotoRepository Photo
+        {
+            get
+            {
+                if (_photoRespository == null)
+                    _photoRespository = new PhotoRepository(_repositoryContext);
+
+                return _photoRespository;
+            }
+        }
+
+        public IUserRepository User
+        {
+            get
+            {
+                if (_userRepository == null)
+                    _userRepository = new UserRepository(_repositoryContext);
+
+                return _userRepository;
+            }
+        }
+
+ 
+
+        public IAuthRepository Auth
+        {
+            get
+            {
+                if (_authRepository == null)
+                    _authRepository = new AuthRepository(_repositoryContext);
+
+                return _authRepository;
+            }
+        }
+
+        public IPostRepository Post
+        {
+            get
+            {
+                if (_postRepository == null)
+                    _postRepository = new PostRepository(_repositoryContext);
+
+                return _postRepository;
+            }
+        }
+
+        public IProfileRepository Profile
+        {
+            get
+            {
+                if (_profileRepository == null)
+                    _profileRepository = new ProfileRepository(_repositoryContext);
+
+                return _profileRepository;
+            }
+        }
+
+
 
         public void SaveAsync() => _repositoryContext.SaveChangesAsync();
     }
