@@ -16,7 +16,9 @@ using Microsoft.Extensions.Options;
 using Serilog;
 using Microsoft.OpenApi.Models;
 using Repositories;
-
+using Entities;
+using Chillflixapi.Extensions;
+using Chillflixapi.Middleware;
 
 
 namespace Chillflixapi
@@ -35,35 +37,15 @@ namespace Chillflixapi
         {
             services.AddDbContextPool<ChillflixapiContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.ConfigureRepositoryManager();
             services.AddScoped<ProfileRepository>();
             services.AddScoped<UserRepository>();
             services.AddMvcCore().AddXmlSerializerFormatters().AddJsonFormatters();
-            //Register Swagger Generator, Define Swagger Documents
-            services.AddSwaggerGen((options) => {
-                options.SwaggerDoc(
-                    "v1",
-                    new OpenApiInfo
-                    {
-                        Title = "Chillflix API",
-                        Version = "v1",
-                        Description = "Chillflix an ASP.NET Core Application",
-                        Contact = new OpenApiContact
-                        {
-                            Name = "Danny Seymour",
-                            Url = new Uri("https://dannyseymour.me"),
-                        }
-                    }
-                    );
-            });
-
+            services.ConfigureSwagger();
+            
             //enable CORS to allow the SPA to call our API
             services.AddCors();
-            //Using DbContext with dependency injection
-            // Use connection string from appsettings.json file
-            services.AddDbContext<ChillflixapiContext>(options =>
-            {
-                options.UseSqlServer(Configuration["AppSettings:ConnectionString"]);
-            });
+            services.ConfigureSqlContext(Configuration);
 
             services.AddAuthentication(AzureADB2CDefaults.BearerAuthenticationScheme)
         .AddAzureADB2CBearer(options => Configuration.Bind("AzureAdB2C", options));

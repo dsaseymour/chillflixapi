@@ -17,9 +17,8 @@ namespace Contracts
     public interface IRepositoryBase<T> 
     {
         IQueryable<T> GetAll(bool trackChanges);
-        IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
-        IQueryable<T> Get(int id);
-        void Create(T entity);
+        IQueryable<T> GetWhere(Expression<Func<T, bool>> expression, bool trackChanges);
+        void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
         /*
@@ -29,6 +28,13 @@ namespace Contracts
         void Update(T entity);
         void Delete(T entity);
         */
+
+        Task<T> GetById(int id);
+        Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
+
+        Task<int> CountAll();
+        Task<int> CountWhere(Expression<Func<T, bool>> predicate);
+
     }
 
 }
