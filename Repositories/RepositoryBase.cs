@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Contracts;
 using Entities;
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -27,23 +28,13 @@ namespace Repositories
 
         public void Update(T entity) => _repositoryContext.Set<T>().Update(entity);
 
-
-        public async Task GetById(T entity, )
-        {
-             await _repositoryContext.Set<T>().FindAsync(id);
-
-        }
-
         public IQueryable<T> GetAll(bool trackchanges) => !trackchanges ? _repositoryContext.Set<T>().AsNoTracking() : _repositoryContext.Set<T>();
         
-
         public IQueryable<T> GetWhere(Expression<Func<T, bool>> expression, bool trackChanges) => !trackChanges ? _repositoryContext.Set<T>().Where(expression).AsNoTracking(): _repositoryContext.Set<T>().Where(expression);
 
         public async Task<int> CountAll () =>  await _repositoryContext.Set<T>().CountAsync();
 
         public async Task<int> CountWhere(Expression<Func<T, bool>> predicate) => await _repositoryContext.Set<T>().CountAsync<T>(predicate);
-
-        public async Task<T> GetById(int id) => await _repositoryContext.Set<T>().FindAsync(id);
 
         public async Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate) => await _repositoryContext.Set<T>().FirstOrDefaultAsync(predicate);
 

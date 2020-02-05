@@ -1,9 +1,9 @@
 ﻿using System;
+using Contracts;
 namespace Entities.Models
 {
-    public abstract class Entity
-    {
-        public virtual long Id { get; protected set; }
+    public abstract class EntityBase<Tkey>: IEntityBase<Tkey> where Tkey : class
+        public virtual Tkey Id { get; protected set; }
         protected virtual object Actual => this;
 
         public override bool Equals(object obj)
@@ -19,7 +19,7 @@ namespace Entities.Models
             if (Actual.GetType() != other.Actual.GetType())
                 return false;
 
-            if (Id == 0 || other.Id == 0)
+            if (Id.Equals( 0) || other.Id.Equals( 0))
                 return false;
 
             return Id == other.Id;
@@ -40,6 +40,7 @@ namespace Entities.Models
         {
             return !(a == b);
         }
+
 
         public override int GetHashCode()
         {
