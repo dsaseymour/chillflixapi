@@ -5,7 +5,7 @@ using Contracts;
 
 namespace Repositories
 {
-    public class PostRepository:RepositoryBase<Post>,IPostRepository
+    public class PostRepository:RepositoryBase<Post,int>,IPostRepository
     {
         public PostRepository(ChillflixapiContext chillflixcontext) : base(chillflixcontext)
         {

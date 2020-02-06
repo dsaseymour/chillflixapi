@@ -4,6 +4,6 @@ namespace Entities.Models
 {
     public abstract class EntityBase<Tkey> 
     {
-        public virtual Tkey Id { get; protected set; }
+        public virtual Tkey Id { get;  set; }
     }
 }

@@ -1,6 +1,7 @@
-﻿Entities.ConfigurationEntities.ConfigurationEntities.Configurationusing System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Entities.Models;
 
 namespace Entities.Configuration
 {

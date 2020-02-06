@@ -5,7 +5,7 @@ using Contracts;
 
 namespace Repositories
 {
-    public class MediaRepository:RepositoryBase<Media>,IMediaRepository
+    public class MediaRepository:RepositoryBase<Media, int>,IMediaRepository
     {
         public MediaRepository(ChillflixapiContext chillflixcontext) : base(chillflixcontext)
         {

@@ -5,7 +5,7 @@ using Entities.Models;
 
 namespace Repositories
 {
-    public class UserRepository : RepositoryBase<User>, IUserRepository
+    public class UserRepository : RepositoryBase<User,int>, IUserRepository
     {
 
         public UserRepository(ChillflixapiContext chillflixcontext) : base(chillflixcontext)

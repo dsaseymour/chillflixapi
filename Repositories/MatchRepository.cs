@@ -6,10 +6,11 @@ using Entities;
 
 namespace Repositories
 {
-    public class MatchRepository: RepositoryBase<Match>, IMatchRepository
+    public class MatchRepository: RepositoryBase<Match, int>, IMatchRepository
     {
         public MatchRepository(ChillflixapiContext chillflixcontext) : base(chillflixcontext)                                              )
         {
+
         }
     }
 }
