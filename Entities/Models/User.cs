@@ -9,13 +9,11 @@ using System.ComponentModel.DataAnnotations;
 namespace Entities.Models
 {
 
-    public class User : IEntity
+    public class User : EntityBase<int>
     {
         public User()
         {
         }
-
-        public int Id { get; set; }//Primary Key
         public string City { get; set; }
         public string Country { get; set; }
         public DateTime Birthday { get; set; }

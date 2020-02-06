@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Entities.Models
 {
-    public class Post
+    public class Post : EntityBase<int>
     {
         public Post()
         {

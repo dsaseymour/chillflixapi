@@ -4,9 +4,8 @@ using System.Collections.Generic;
 namespace Entities.Models
 {
 
-    public class MatchResponse
+    public class MatchResponse : EntityBase<int>
     {
-        public int Id { get; set; }
         public ERequestResponseStatus StatusofResponse { get; set; }
         #region joinTables
         public int MatchFkey { get; set; }

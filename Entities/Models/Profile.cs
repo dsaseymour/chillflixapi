@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 namespace Entities.Models
 {
 
-    public class Profile : IEntity
+    public class Profile : EntityBase<int>
     {
         //Properties
-        public int Id { get; set; }
         #region basics
         public string SexualOrientation { get; set; }
         public string Gender { get; set; }
