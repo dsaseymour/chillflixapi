@@ -13,7 +13,7 @@ namespace Repositories
 {
     //https://www.notion.so/dannysas/EfCoreRepository-ba39cc24447d44adbbf3358747a3d75e
 
-    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<TEntity,Tkey> : IRepositoryBase<TEntity, Tkey> where TEntity : class
     {
         protected ChillflixapiContext _repositoryContext;
 
@@ -22,22 +22,26 @@ namespace Repositories
             _repositoryContext = repositoryContext;
         }
 
-        public void Add(T entity) => _repositoryContext.Set<T>().Add(entity);
+        public void Add(TEntity entity) => _repositoryContext.Set<TEntity>().Add(entity);
 
-        public void Delete(T entity) => _repositoryContext.Set<T>().Remove(entity);
+        public void Delete(TEntity entity) => _repositoryContext.Set<TEntity>().Remove(entity);
 
-        public void Update(T entity) => _repositoryContext.Set<T>().Update(entity);
+        public void Update(TEntity entity) => _repositoryContext.Set<TEntity>().Update(entity);
 
-        public IQueryable<T> GetAll(bool trackchanges) => !trackchanges ? _repositoryContext.Set<T>().AsNoTracking() : _repositoryContext.Set<T>();
+        public IQueryable<TEntity> GetAll(bool trackchanges) => !trackchanges ? _repositoryContext.Set<TEntity>().AsNoTracking() : _repositoryContext.Set<TEntity>();
         
-        public IQueryable<T> GetWhere(Expression<Func<T, bool>> expression, bool trackChanges) => !trackChanges ? _repositoryContext.Set<T>().Where(expression).AsNoTracking(): _repositoryContext.Set<T>().Where(expression);
+        public IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> expression, bool trackChanges) => !trackChanges ? _repositoryContext.Set<TEntity>().Where(expression).AsNoTracking(): _repositoryContext.Set<TEntity>().Where(expression);
 
-        public async Task<int> CountAll () =>  await _repositoryContext.Set<T>().CountAsync();
+        public async Task<int> CountAll () =>  await _repositoryContext.Set<TEntity>().CountAsync();
 
-        public async Task<int> CountWhere(Expression<Func<T, bool>> predicate) => await _repositoryContext.Set<T>().CountAsync<T>(predicate);
+        public async Task<int> CountWhere(Expression<Func<TEntity, bool>> predicate) => await _repositoryContext.Set<TEntity>().CountAsync<TEntity>(predicate);
 
-        public async Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate) => await _repositoryContext.Set<T>().FirstOrDefaultAsync(predicate);
+        public async Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate) => await _repositoryContext.Set<TEntity>().FirstOrDefaultAsync(predicate);
 
+        public async Task<TEntity> GetById(Tkey id)
+        {
+            return await _repositoryContext.Set<TEntity>().FindAsync(id);
+        }
     }
 
 
