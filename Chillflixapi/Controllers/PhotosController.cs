@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
+
 namespace Chillflixapi.Controllers
 {
     public class PhotosController: ControllerBase

@@ -15,7 +15,7 @@ namespace Chillflixapi.Controllers
     public class UsersController :ControllerBase
     {
         //https://www.notion.so/dannysas/Users-Controller-3c8a6ef4b63043358c778e5f1b5b601c
-        public UsersController(UserRepository repository, ILogger<UsersController> logger) : base(repository, logger)
+        public UsersController(UserRepository repository, ILogger<UsersController> logger) 
         {
         }
     }
