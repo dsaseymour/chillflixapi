@@ -8,9 +8,11 @@ namespace Repositories
 {
     public class MatchRepository: RepositoryBase<Match, int>, IMatchRepository
     {
-        public MatchRepository(ChillflixapiContext chillflixcontext) : base(chillflixcontext)                                              )
+
+        public MatchRepository(ChillflixapiContext chillflixcontext) : base(chillflixcontext)                                              
         {
 
         }
+        
     }
 }

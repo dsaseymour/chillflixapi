@@ -5,7 +5,7 @@ using Entities.Models;
 
 namespace Repositories
 {
-    public class AuthRepository: RepositoryBase<Like>, IAuthRepository
+    public class AuthRepository: RepositoryBase<Like,int>, IAuthRepository
     {
         //https://www.notion.so/dannysas/AuthRepository-82ade223ba3e42a0a4d2b2a26ca8a6db
         public AuthRepository(ChillflixapiContext repositoryContext):base(repositoryContext)
