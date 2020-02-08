@@ -8,19 +8,22 @@ using Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
 
 namespace Chillflixapi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/users")]
     [ApiController]
     public class UsersController :ControllerBase
     {
         //https://www.notion.so/dannysas/Users-Controller-3c8a6ef4b63043358c778e5f1b5b601c
         private readonly IRepositoryManager _repository;
+        private readonly IMapper _mapper;
 
-        public UsersController(IRepositoryManager repository, ILogger<UsersController> logger) 
+        public UsersController(IRepositoryManager repository, ILogger<UsersController> logger,IMapper mapper) 
         {
             _repository = repository;
+            _mapper = mapper; 
         }
 
 

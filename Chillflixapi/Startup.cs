@@ -19,7 +19,7 @@ using Repositories;
 using Entities;
 using Chillflixapi.Extensions;
 using Chillflixapi.Middleware;
-
+using AutoMapper;
 
 namespace Chillflixapi
 {
@@ -46,7 +46,7 @@ namespace Chillflixapi
             //enable CORS to allow the SPA to call our API
             services.AddCors();
             services.ConfigureSqlContext(Configuration);
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddAuthentication(AzureADB2CDefaults.BearerAuthenticationScheme)
         .AddAzureADB2CBearer(options => Configuration.Bind("AzureAdB2C", options));
 
