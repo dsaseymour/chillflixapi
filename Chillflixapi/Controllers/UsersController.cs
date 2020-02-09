@@ -19,16 +19,18 @@ namespace Chillflixapi.Controllers
     public class UsersController :ControllerBase
     {
         //https://www.notion.so/dannysas/Users-Controller-3c8a6ef4b63043358c778e5f1b5b601c
-        private readonly IRepositoryManager _repository;
-        private readonly IMapper _mapper;
+        private readonly UserService _userservice;
 
-        public UsersController(IRepositoryManager repository, ILogger<UsersController> logger,IMapper mapper) 
+        public UsersController(IRepositoryManager repository, ILogger<UsersController> logger,IMapper mapper,UserService userservice) 
         {
-            _repository = repository;
-            _mapper = mapper; 
+            _userservice = userservice;
         }
 
-
+        [HttpGet]
+        public IQueryable<User> GetAllUsers()
+        {
+            return _userservice.GetAllUsers();
+        }
 
 
 

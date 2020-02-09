@@ -20,6 +20,7 @@ using Entities;
 using Chillflixapi.Extensions;
 using Chillflixapi.Middleware;
 using AutoMapper;
+using Services;
 
 namespace Chillflixapi
 {
@@ -37,9 +38,16 @@ namespace Chillflixapi
         {
             services.AddDbContextPool<ChillflixapiContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //add repositories
             services.ConfigureRepositoryManager();
             services.AddScoped<ProfileRepository>();
             services.AddScoped<UserRepository>();
+
+            //add services
+            services.AddScoped<UserService>();
+
+
+
             services.AddMvcCore().AddXmlSerializerFormatters().AddJsonFormatters();
             services.ConfigureSwagger();
             
