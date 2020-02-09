@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Contracts;
+using Services;
+
 
 
 namespace Chillflixapi.Controllers

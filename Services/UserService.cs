@@ -1,0 +1,10 @@
+﻿using System;
+namespace Services
+{
+    public class UserService
+    {
+        public UserService()
+        {
+        }
+    }
+}

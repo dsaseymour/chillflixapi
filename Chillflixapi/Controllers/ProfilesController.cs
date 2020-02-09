@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Repositories;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
+using Services;
+
 
 namespace Chillflixapi.Controllers
 {

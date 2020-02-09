@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositorie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{A87185CA-22CE-492F-AEC6-AC28E032BB9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChillflixapiTests", "ChillflixapiTests\ChillflixapiTests.csproj", "{2F5027CE-CA82-415C-A2A2-39BB9A2A4774}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChillflixapiTests", "ChillflixapiTests\ChillflixapiTests.csproj", "{F5A1AE2D-8DB2-466E-B989-C684A4D0BD16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{A87185CA-22CE-492F-AEC6-AC28E032BB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A87185CA-22CE-492F-AEC6-AC28E032BB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A87185CA-22CE-492F-AEC6-AC28E032BB9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F5027CE-CA82-415C-A2A2-39BB9A2A4774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F5027CE-CA82-415C-A2A2-39BB9A2A4774}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F5027CE-CA82-415C-A2A2-39BB9A2A4774}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F5027CE-CA82-415C-A2A2-39BB9A2A4774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A1AE2D-8DB2-466E-B989-C684A4D0BD16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A1AE2D-8DB2-466E-B989-C684A4D0BD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A1AE2D-8DB2-466E-B989-C684A4D0BD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A1AE2D-8DB2-466E-B989-C684A4D0BD16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
