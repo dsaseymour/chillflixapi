@@ -19,7 +19,15 @@ namespace Contracts
      * _repository.User.Create(user);
      * 
      * */
-        //IUserRepository User {get;}
+        ILikeRepository Like { get; }
+        IMatchRepository Match { get; }
+        IMediaRepository Media { get; }
+        IPhotoRepository Photo { get; }
+        IUserRepository User { get; }
+        IAuthRepository Auth { get; }
+        IPostRepository Post { get; }
+        IProfileRepository Profile { get; }
         Task SaveAsync();
+
     }
 }

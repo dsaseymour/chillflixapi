@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Entities.Models;
-using Microsoft.AspNetCore.Mvc;
+using Entities.Dtos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
@@ -16,21 +16,47 @@ namespace Services
 {
     public class UserService
     {
-        private readonly IRepositoryManager _repository;
+        private readonly IRepositoryManager _repositorymanager;
+        private readonly IMapper _mapper;
 
-        public UserService(IRepositoryManager repository)
+        public UserService(IRepositoryManager repositorymanager,IMapper mapper)
         {
-            _repository = repository;
+            _repositorymanager = repositorymanager;
+            _mapper = mapper;
+        }
+
+        public IQueryable<UserDto> GetAllUsers()
+        {
+            var users = _repositorymanager.User.GetAllUsers(trackChanges: false);
+                
+                //GetAll(trackChanges: false);
+
+            var usersDto = _mapper.Map<IQueryable<UserDto>>(users);
+
+            return usersDto;
+        }
+
+        public UserDto GetUser(int id)
+        {
 
         }
 
-        public async Task<IQueryable> GetAllUsers()
+        public void DeleteUser(int id)
         {
-            var users = await _repository.Company.GetAllCompaniesAsync(trackChanges: false);
+            //Delete(id);
 
-            var usersDto = _mapper.Map<IEnumerable<UserDto>>(users);
+            //var user = HttpContext.Items["user"] as User;
 
-            return await Ok(usersDto);
+            //_DeleteEmployee(employeeForCompany);
+           // await _repository.SaveAsync();
+
+
+        }
+
+        public void UpdateUser(User user)
+        {
+
+
         }
 
 
