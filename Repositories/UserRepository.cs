@@ -8,7 +8,7 @@ using Entities.Models;
 
 namespace Repositories
 {
-    public class UserRepository : RepositoryBase<User, int>, IUserRepository
+    public class UserRepository : RepositoryBase<User, int>, IUserRepository<int>
     {
 
         public UserRepository(ChillflixapiContext chillflixcontext) : base(chillflixcontext)
@@ -24,16 +24,31 @@ namespace Repositories
          * */
 
 
-        public async Task<IQueryable<User>> GetAllUsers()
+        public async Task<IEnumerable<User>> GetAllUsersAsync(bool trackChanges)
         {
 
         }
 
 
-        public async Task<User> GetUser(int id)
+        public async Task<User> GetUserAsync(int id)
         {
             return await GetById(id);
         }
+
+        public async Task<IEnumerable<User>> GetByIdsAsync(IEnumerable<int> ids, bool trackChanges)
+        {
+
+
+        }
+
+
+        public void CreateUser(User user)
+        {
+
+
+        }
+
+
 
         public void DeleteUser(int id)
         {
@@ -44,6 +59,8 @@ namespace Repositories
         {
 
         }
+
+
 
     }
 

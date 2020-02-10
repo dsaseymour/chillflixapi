@@ -25,21 +25,24 @@ namespace Services
             _mapper = mapper;
         }
 
-        public IQueryable<UserDto> GetAllUsers()
+
+
+        public async Task<IEnumerable<UserDto>> GetAllUsers()
         {
-            var users = _repositorymanager.User.GetAllUsers(trackChanges: false);
-                
+            var usersFromDb = await _repositorymanager.User.GetAllUsersAsync(trackChanges: false);
                 //GetAll(trackChanges: false);
-
-            var usersDto = _mapper.Map<IQueryable<UserDto>>(users);
-
+            var usersDto = _mapper.Map<IEnumerable<UserDto>>(usersFromDb);
             return usersDto;
         }
 
-        public UserDto GetUser(int id)
-        {
 
+        public async Task<UserDto> GetUser(int id)
+        {
+            var userFromDb = await _repositorymanager.User.GetUserAsync(id);
+            var userDto= _mapper.Map<UserDto>(userFromDb);
+            return userDto;
         }
+
 
         public void DeleteUser(int id)
         {
@@ -48,8 +51,9 @@ namespace Services
             //var user = HttpContext.Items["user"] as User;
 
             //_DeleteEmployee(employeeForCompany);
-           // await _repository.SaveAsync();
 
+            //            await _repositorymanager.SaveAsync();
+            //             return NoContent();
 
         }
 
@@ -57,8 +61,9 @@ namespace Services
         {
 
 
+            //            await _repositorymanager.SaveAsync();
+            //             return NoContent();
         }
-
 
     }
 }

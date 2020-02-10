@@ -23,7 +23,7 @@ namespace Contracts
         IMatchRepository Match { get; }
         IMediaRepository Media { get; }
         IPhotoRepository Photo { get; }
-        IUserRepository User { get; }
+        IUserRepository<int> User { get; }
         IAuthRepository Auth { get; }
         IPostRepository Post { get; }
         IProfileRepository Profile { get; }

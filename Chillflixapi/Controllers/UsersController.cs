@@ -26,9 +26,10 @@ namespace Chillflixapi.Controllers
         }
 
         [HttpGet]
-        public Task<IActionResult> GetAllUsers()
+        public ActionResult<IEnumerable<User>> GetAllUsers()
         {
-            return Ok(_userservice.GetAllUsers());
+            return  Ok(_userservice.GetAllUsers());
+
         }
 
 
