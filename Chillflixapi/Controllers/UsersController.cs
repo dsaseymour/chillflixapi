@@ -19,10 +19,12 @@ namespace Chillflixapi.Controllers
     {
         //https://www.notion.so/dannysas/Users-Controller-3c8a6ef4b63043358c778e5f1b5b601c
         private readonly UserService _userservice;
+        private readonly ILogger<UsersController> _logger;
 
         public UsersController(ILogger<UsersController> logger, UserService userservice) 
         {
             _userservice = userservice;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -33,6 +35,47 @@ namespace Chillflixapi.Controllers
         }
 
 
+        [HttpGet("{id}", Name = "GetEmployeeForCompany")]
+        public  ActionResult<User> GetUser( int id)
+        {
+            return Ok(_userservice.GetUser(id));
+        }
+
+        [HttpPost]
+        public ActionResult CreateUser(int id, [FromBody] EmployeeForCreationDto employee)
+        {
+            return CreatedAtRoute("GetEmployeeForCompany", new { companyId, id = employeeToReturn.Id }, _userservice.Create);
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteUser( int id)
+        {
+            _userservice.DeleteUser(id);
+            return NoContent();
+        }
+
+
+
+
+
+[HttpPut("{id}")]
+public Task<IActionResult> UpdateUser( int id, [FromBody] UserForUpdateDto employee)
+{
+
+            _userservice.UpdateUser();
+
+            return NoContent();
+}
+
+[HttpPatch("{id}")]
+public async Task<IActionResult> PartiallyUpdateUser(int id, [FromBody] JsonPatchDocument<UserForUpdateDto> patchDoc)
+{
+
+
+            _userservice.PartialUpdateUser();
+
+            return NoContent();
+}
 
     }
 

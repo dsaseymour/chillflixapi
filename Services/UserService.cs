@@ -44,6 +44,15 @@ namespace Services
         }
 
 
+        public void CreateUser()
+        {
+
+
+
+        }
+
+
+
         public void DeleteUser(int id)
         {
             //Delete(id);
@@ -57,7 +66,7 @@ namespace Services
 
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(int user)
         {
 
 
@@ -65,5 +74,11 @@ namespace Services
             //             return NoContent();
         }
 
+
+        public void PartialUpdateUser(int id)
+        {
+
+
+        }
     }
 }
