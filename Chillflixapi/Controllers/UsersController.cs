@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
 using Services;
-
+using Entities.Dtos;
 
 namespace Chillflixapi.Controllers
 {
@@ -35,17 +35,22 @@ namespace Chillflixapi.Controllers
         }
 
 
-        [HttpGet("{id}", Name = "GetEmployeeForCompany")]
+        [HttpGet("{id}", Name = "GetUser")]
         public  ActionResult<User> GetUser( int id)
         {
             return Ok(_userservice.GetUser(id));
         }
 
+        //our method is restriced to post requests
+        //collecting data from the request body instead of the URI
+        //the user comes from the client it must be validated 
         [HttpPost]
-        public ActionResult CreateUser(int id, [FromBody] EmployeeForCreationDto employee)
+        public ActionResult CreateUser( [FromBody] UserForCreationDto user)
         {
-            return CreatedAtRoute("GetEmployeeForCompany", new { companyId, id = employeeToReturn.Id }, _userservice.Create);
-        }
+            //get user is the function where the newly created user object can be retrieved
+
+            return CreatedAtRoute("GetUser", new { companyId, id = employeeToReturn.Id }, _userservice.Create);
+        }   
 
         [HttpDelete("{id}")]
         public ActionResult DeleteUser( int id)

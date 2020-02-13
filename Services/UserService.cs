@@ -30,23 +30,25 @@ namespace Services
         public async Task<IEnumerable<UserDto>> GetAllUsers()
         {
             var usersFromDb = await _repositorymanager.User.GetAllUsersAsync(trackChanges: false);
-                //GetAll(trackChanges: false);
             var usersDto = _mapper.Map<IEnumerable<UserDto>>(usersFromDb);
             return usersDto;
         }
 
 
-        public async Task<UserDto> GetUser(int id)
+        public async Task<UserDto> GetUserAsync(int id)
         {
-            var userFromDb = await _repositorymanager.User.GetUserAsync(id);
+            var userFromDb = await _repositorymanager.User.GetUserAsync(id,trackChanges: false);
             var userDto= _mapper.Map<UserDto>(userFromDb);
             return userDto;
         }
 
 
-        public void CreateUser()
+        public void CreateUser(User user)
         {
+            if (user == null)
+            {
 
+            }
 
 
         }

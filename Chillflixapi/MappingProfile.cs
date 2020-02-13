@@ -10,7 +10,8 @@ namespace Chillflixapi
         public MappingProfile()
         {
 
-
+            CreateMap<User, UserDto>();
+            CreateMap<UserForCreationDto,User>();
 
 
         }
