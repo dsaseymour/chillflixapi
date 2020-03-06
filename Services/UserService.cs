@@ -17,23 +17,23 @@ namespace Services
     public class UserService
     {
         private readonly IRepositoryManager _repositorymanager;
+        private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public UserService(IRepositoryManager repositorymanager,IMapper mapper)
+        public UserService(IRepositoryManager repositorymanager,ILoggerManager logger,IMapper mapper)
         {
             _repositorymanager = repositorymanager;
             _mapper = mapper;
+            _logger=logger;
         }
 
-
-
+        #region getusers-service definition  
         public async Task<IEnumerable<UserDto>> GetAllUsers()
         {
             var usersFromDb = await _repositorymanager.User.GetAllUsersAsync(trackChanges: false);
             var usersDto = _mapper.Map<IEnumerable<UserDto>>(usersFromDb);
             return usersDto;
         }
-
 
         public async Task<UserDto> GetUserAsync(int id)
         {
@@ -42,15 +42,27 @@ namespace Services
             return userDto;
         }
 
-
-        public void CreateUser(User user)
+        public async Task<IEnumerable<UserDto>> GetUserCollection(IEnumerable<Guid> ids)
         {
-            if (user == null)
+            var userEntities = _repositorymanager.User.GetByIdsAsync(ids, trackChanges: false);
+            if(ids.Count() != userEntities.Count()) 
             {
+            _logger.LogError("Some ids are not valid in a collection"); 
+            return NotFound();
+            } 
 
-            }
+            var userToReturn = _mapper.Map<IEnumerable<UserDto>>(userEntities);
+        }
+        #endregion 
 
 
+        public async Task<UserDto> CreateUser(User user)
+        {
+            var userEntity = _mapper.Map<User>(user);
+            _repositorymanager.User.CreateUser(userEntity);
+            await _repositorymanager.SaveAsync();
+            var userToReturn = _mapper.Map<UserDto>(userEntity);
+            return  userToReturn;
         }
 
 
@@ -68,12 +80,10 @@ namespace Services
 
         }
 
+        #region updateusers-service definition  
         public void UpdateUser(int user)
         {
-
-
-            //            await _repositorymanager.SaveAsync();
-            //             return NoContent();
+                    await _repositorymanager.SaveAsync();
         }
 
 
@@ -82,5 +92,6 @@ namespace Services
 
 
         }
+        #endregion
     }
 }

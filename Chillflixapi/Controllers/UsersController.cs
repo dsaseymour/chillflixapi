@@ -26,7 +26,8 @@ namespace Chillflixapi.Controllers
             _userservice = userservice;
             _logger = logger;
         }
-
+    
+        #region getusers-controller definition  
         [HttpGet]
         public ActionResult<IEnumerable<User>> GetAllUsers()
         {
@@ -41,6 +42,19 @@ namespace Chillflixapi.Controllers
             return Ok(_userservice.GetUser(id));
         }
 
+        [HttpGet("collection/({ids})", Name = "UserCollection")] 
+        public IActionResult GetUserCollection(IEnumerable<Guid> ids) 
+        {
+             if(ids == null) {
+                _logger.LogError("Parameter ids is null"); 
+                return BadRequest("Parameter ids is null");
+            }
+
+            return Ok(_userservice.GetUserCollection(ids));
+        }
+        #endregion
+
+
         //our method is restriced to post requests
         //collecting data from the request body instead of the URI
         //the user comes from the client it must be validated 
@@ -48,8 +62,20 @@ namespace Chillflixapi.Controllers
         public ActionResult CreateUser( [FromBody] UserForCreationDto user)
         {
             //get user is the function where the newly created user object can be retrieved
+          if(user == null)
+            {
+                _logger.LogError("UserForCreationDto object sent from client is null.");
+                return BadRequest("UserForCreationDto object is null");
+            }
 
-            return CreatedAtRoute("GetUser", new { companyId, id = employeeToReturn.Id }, _userservice.Create);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the CompanyForCreationDto object");
+                return UnprocessableEntity(ModelState);
+            }
+
+
+            return CreatedAtRoute("GetUser", new { userId, id = employeeToReturn.Id }, _userservice.CreateUser(user));
         }   
 
         [HttpDelete("{id}")]
@@ -62,27 +88,20 @@ namespace Chillflixapi.Controllers
 
 
 
+        #region updateuser-controller definition
+        [HttpPut("{id}")]
+        public Task<IActionResult> UpdateUser( int id, [FromBody] UserForUpdateDto employee)
+        {
+                    _userservice.UpdateUser();
+                    return NoContent();
+        }
 
-[HttpPut("{id}")]
-public Task<IActionResult> UpdateUser( int id, [FromBody] UserForUpdateDto employee)
-{
-
-            _userservice.UpdateUser();
-
-            return NoContent();
-}
-
-[HttpPatch("{id}")]
-public async Task<IActionResult> PartiallyUpdateUser(int id, [FromBody] JsonPatchDocument<UserForUpdateDto> patchDoc)
-{
-
-
-            _userservice.PartialUpdateUser();
-
-            return NoContent();
-}
-
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PartiallyUpdateUser(int id, [FromBody] JsonPatchDocument<UserForUpdateDto> patchDoc)
+        {
+                    _userservice.PartialUpdateUser();
+                    return NoContent();
+        }
+        #endregion
     }
-
-
 }
