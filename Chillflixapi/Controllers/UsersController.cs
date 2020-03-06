@@ -43,14 +43,18 @@ namespace Chillflixapi.Controllers
         }
 
         [HttpGet("collection/({ids})", Name = "UserCollection")] 
-        public IActionResult GetUserCollection(IEnumerable<Guid> ids) 
+        public IActionResult GetUserCollection(IEnumerable<int> ids) 
         {
-             if(ids == null) {
+            if(ids == null) {
                 _logger.LogError("Parameter ids is null"); 
                 return BadRequest("Parameter ids is null");
             }
-
-            return Ok(_userservice.GetUserCollection(ids));
+            IEnumerable<UserDto> usersToReturn = _userservice.GetUserCollection(ids);
+            if(usersToReturn == null){
+                _logger.LogError("Some ids are not valid");
+                return NotFound();
+            }
+            return Ok(usersToReturn);
         }
         #endregion
 
@@ -58,11 +62,12 @@ namespace Chillflixapi.Controllers
         //our method is restriced to post requests
         //collecting data from the request body instead of the URI
         //the user comes from the client it must be validated 
+        //we create our id on the server side 
         [HttpPost]
         public ActionResult CreateUser( [FromBody] UserForCreationDto user)
         {
             //get user is the function where the newly created user object can be retrieved
-          if(user == null)
+            if(user == null)
             {
                 _logger.LogError("UserForCreationDto object sent from client is null.");
                 return BadRequest("UserForCreationDto object is null");
@@ -73,9 +78,9 @@ namespace Chillflixapi.Controllers
                 _logger.LogError("Invalid model state for the CompanyForCreationDto object");
                 return UnprocessableEntity(ModelState);
             }
+            UserDto userToReturn=_userservice.CreateUser(user);
 
-
-            return CreatedAtRoute("GetUser", new { userId, id = employeeToReturn.Id }, _userservice.CreateUser(user));
+            return CreatedAtRoute("GetUser", new { userId, id = userToReturn.Id }, );
         }   
 
         [HttpDelete("{id}")]
@@ -91,16 +96,33 @@ namespace Chillflixapi.Controllers
         #region updateuser-controller definition
         [HttpPut("{id}")]
         public Task<IActionResult> UpdateUser( int id, [FromBody] UserForUpdateDto employee)
-        {
-                    _userservice.UpdateUser();
-                    return NoContent();
+        {           
+            var updatedUser =_userservice.UpdateUser(id, employee);
+            if(updatedUser == null)
+            {
+                _logger.LogInfo($"User with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            return NoContent();
         }
 
         [HttpPatch("{id}")]
         public async Task<IActionResult> PartiallyUpdateUser(int id, [FromBody] JsonPatchDocument<UserForUpdateDto> patchDoc)
         {
-                    _userservice.PartialUpdateUser();
-                    return NoContent();
+            if(company == null)
+            {
+                _logger.LogError("UserForUpdateDto object sent from client is null.");
+                return BadRequest("UserForUpdateDto object is null");
+            }
+
+            if(!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the UserForUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+
+            _userservice.PartialUpdateUser();
+            return NoContent();
         }
         #endregion
     }
