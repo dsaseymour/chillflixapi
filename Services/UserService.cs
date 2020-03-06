@@ -69,17 +69,16 @@ namespace Services
 
 
 
-        public void DeleteUser(int id)
+        public async Task DeleteUser(int id)
         {
-            //Delete(id);
-
-            //var user = HttpContext.Items["user"] as User;
-
-            //_DeleteEmployee(employeeForCompany);
-
-            //            await _repositorymanager.SaveAsync();
-            //             return NoContent();
-
+            var user = await _repositorymanager.User.GetUserAsync(id, trackChanges: false);
+            if(user == null)
+            {
+                _logger.LogInfo($"Company with id: {id} doesn't exist in the database.");
+                return;
+            }
+            _repositorymanager.User.DeleteUser(user);
+            await _repositorymanager.SaveAsync();
         }
 
         #region updateusers-service definition  
@@ -97,10 +96,29 @@ namespace Services
         }
 
         //PATCH update
-        public void PartialUpdateUser(int id)
+        public async Task PartialUpdateUser(int userId, JsonPatchDocument<UserForUpdateDto> patchDoc)
         {
+             var userEntity = await _repositorymanager.User.GetUserAsync(userId, trackChanges: false);
+            if (userEntity == null)
+            {
+                _logger.LogInfo($"User with id: {userId} doesn't exist in the database.");
+            }
 
+            var userToPatch = _mapper.Map<UserForUpdateDto>(userEntity);
 
+            patchDoc.ApplyTo(userToPatch, ModelState);
+
+            //TryValidateModel(userToPatch);
+
+         //   if(!ModelState.IsValid)
+           // {
+             //   _logger.LogError("Invalid model state for the patch document");
+              //  return UnprocessableEntity(ModelState);
+           // }
+
+            _mapper.Map(userToPatch, userEntity);
+
+            await _repositorymanager.SaveAsync();
         }
         #endregion
     }

@@ -35,7 +35,6 @@ namespace Chillflixapi.Controllers
 
         }
 
-
         [HttpGet("{id}", Name = "GetUser")]
         public  ActionResult<User> GetUser( int id)
         {
@@ -90,9 +89,6 @@ namespace Chillflixapi.Controllers
             return NoContent();
         }
 
-
-
-
         #region updateuser-controller definition
         [HttpPut("{id}")]
         public Task<IActionResult> UpdateUser( int id, [FromBody] UserForUpdateDto employee)
@@ -107,21 +103,14 @@ namespace Chillflixapi.Controllers
         }
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PartiallyUpdateUser(int id, [FromBody] JsonPatchDocument<UserForUpdateDto> patchDoc)
+        public async Task<IActionResult> PartiallyUpdateUser(int userId, [FromBody] JsonPatchDocument<UserForUpdateDto> patchDoc)
         {
-            if(company == null)
+            if(patchDoc == null)
             {
-                _logger.LogError("UserForUpdateDto object sent from client is null.");
-                return BadRequest("UserForUpdateDto object is null");
+                _logger.LogError("patchDoc object sent from client is null.");
+                return BadRequest("patchDoc object is null");
             }
-
-            if(!ModelState.IsValid)
-            {
-                _logger.LogError("Invalid model state for the UserForUpdateDto object");
-                return UnprocessableEntity(ModelState);
-            }
-
-            _userservice.PartialUpdateUser();
+           _userservice.PartiallyUpdateUser(userId,patchDoc);
             return NoContent();
         }
         #endregion
