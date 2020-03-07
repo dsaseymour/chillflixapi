@@ -14,6 +14,7 @@ namespace Repositories
         public UserRepository(ChillflixapiContext chillflixcontext) : base(chillflixcontext)
         {
         }
+
         /*
          *    void SaveUser(User user);
             IEnumerable<User> GetAllUsers();
@@ -26,7 +27,10 @@ namespace Repositories
 
         public async Task<IEnumerable<User>> GetAllUsersAsync(bool trackChanges)
         {
-
+//            await FindAll(trackChanges)
+  //          .OrderBy(c => c.Name)
+    //        .ToListAsync();
+            return GetAll(trackChanges);
         }
 
 
@@ -38,31 +42,17 @@ namespace Repositories
         public async Task<IEnumerable<User>> GetByIdsAsync(IEnumerable<int> ids, bool trackChanges)
         {
 
-
         }
-
 
         public void CreateUser(User user)
         {
-
-
+            Add();
         }
 
+        public void DeleteUser(int id) => Delete(GetUserAsync(id));
 
-
-        public void DeleteUser(int id)
-        {
-
-        }
-
-        public void UpdateUser(User user)
-        {
-
-        }
-
-
+        public void UpdateUser(User user) => Update(user);
 
     }
-
 
 }

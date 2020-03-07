@@ -28,20 +28,24 @@ namespace Repositories
 
         public void Update(TEntity entity) => _repositoryContext.Set<TEntity>().Update(entity);
 
-        public IQueryable<TEntity> GetAll(bool trackchanges) => !trackchanges ? _repositoryContext.Set<TEntity>().AsNoTracking() : _repositoryContext.Set<TEntity>();
+        #region getting definition
+        public async IQueryable<TEntity> GetAll(bool trackchanges) => !trackchanges ? _repositoryContext.Set<TEntity>().AsNoTracking() : _repositoryContext.Set<TEntity>();
         
-        public IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> expression, bool trackChanges) => !trackChanges ? _repositoryContext.Set<TEntity>().Where(expression).AsNoTracking(): _repositoryContext.Set<TEntity>().Where(expression);
+        public async IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> expression, bool trackChanges) => !trackChanges ? _repositoryContext.Set<TEntity>().Where(expression).AsNoTracking(): _repositoryContext.Set<TEntity>().Where(expression);
 
+        public async Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate, bool trackChanges) => !trackChanges ? _repositoryContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(predicate) : _repositoryContext.Set<TEntity>().FirstOrDefaultAsync(predicate) ;
+
+        public async Task<TEntity> GetById(Tkey id) =>  await _repositoryContext.Set<TEntity>().FindAsync(id);
+
+        #endregion
+
+
+        #region counting definition
         public async Task<int> CountAll () =>  await _repositoryContext.Set<TEntity>().CountAsync();
 
         public async Task<int> CountWhere(Expression<Func<TEntity, bool>> predicate) => await _repositoryContext.Set<TEntity>().CountAsync<TEntity>(predicate);
 
-        public async Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate) => await _repositoryContext.Set<TEntity>().FirstOrDefaultAsync(predicate);
-
-        public async Task<TEntity> GetById(Tkey id)
-        {
-            return await _repositoryContext.Set<TEntity>().FindAsync(id);
-        }
+        #endregion
     }
 
 
