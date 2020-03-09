@@ -18,24 +18,16 @@ namespace Contracts
     {
         IQueryable<TEntity> GetAll(bool trackChanges);
         IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> expression, bool trackChanges);
+        Task<TEntity> GetById(Tkey id, bool trackChanges);
+        Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate, bool trackChanges);
+
         void Add(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);
-        Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate);
+
         Task<int> CountAll();
         Task<int> CountWhere(Expression<Func<TEntity, bool>> predicate);
-        Task<TEntity> GetById(Tkey id);
-
-
-        /*
-         * 
-        IQueryable<T> FindAll(bool trackChanges);
-        IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
-        void Create(T entity);
-        void Update(T entity);
-        void Delete(T entity);
-        */
-
+       
     }
 
 }
