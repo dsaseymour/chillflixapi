@@ -15,44 +15,16 @@ namespace Repositories
         {
         }
 
-        /*
-         *    void SaveUser(User user);
-            IEnumerable<User> GetAllUsers();
-            User GetUser(int id);
-            void DeletedStudent(int id);
-            void UpdateUser(User user);
+        public IQueryable<User> GetAllUsers(bool trackChanges) => GetAll(trackChanges);
 
-         * */
+        public async Task<User> GetUserAsync(int id, bool trackChanges) => await GetById(id, trackChanges);
 
+        public IQueryable<User> GetByIdsAsync(IEnumerable<int> ids, bool trackChanges) => GetWhere(x => ids.Contains(x.Id), trackChanges);
 
-        public async Task<IEnumerable<User>> GetAllUsersAsync(bool trackChanges)
-        {
-//            await FindAll(trackChanges)
-  //          .OrderBy(c => c.Name)
-    //        .ToListAsync();
-            return GetAll(trackChanges);
-        }
+        public void CreateUser(User user) => Add(user);
 
-
-        public async Task<User> GetUserAsync(int id)
-        {
-            return await GetById(id);
-        }
-
-        public async Task<IEnumerable<User>> GetByIdsAsync(IEnumerable<int> ids, bool trackChanges)
-        {
-
-        }
-
-        public void CreateUser(User user)
-        {
-            Add();
-        }
-
-        public void DeleteUser(int id) => Delete(GetUserAsync(id));
+        public async Task DeleteUser(int id) => Delete(await GetUserAsync(id,true));
 
         public void UpdateUser(User user) => Update(user);
-
     }
-
 }
