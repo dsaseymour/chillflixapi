@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Xunit;
 
 
@@ -17,7 +18,7 @@ namespace ChillflixapiTests.RepositoryTests
         [Fact]
         public IQueryable<TEntity> GetAll(bool trackChanges)
         {
-            
+        }
 
   //      public IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> expression, bool trackChanges);
     //    public Task<TEntity> GetById(Tkey id, bool trackChanges);

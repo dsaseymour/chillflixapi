@@ -15,7 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repository Tests\" />
+    <Folder Include="MockAssets\" />
+    <Folder Include="Testing\ControllerTests\" />
+    <Folder Include="Testing\ServiceTests\" />
+    <Folder Include="Testing\RepositoryTests\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
